@@ -22,10 +22,14 @@ elseif (${CMAKE_CXX_COMPILER_ID} STREQUAL "MSVC")
 endif()
 
 # set up SDL2pp library
-set(SDL2PP_WITH_IMAGE YES)
-set(SDL2PP_WITH_TTF YES)
+set(SDL2PP_WITH_IMAGE TRUE)
+set(SDL2PP_WITH_TTF TRUE)
 add_subdirectory(SDL2pp)
-include_directories(${SDL2PP_INCLUDE_DIRS})
+
+find_package(SDL2 REQUIRED)
+find_package(SDL2_Image REQUIRED)
+
+include_directories(${SDL2PP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
 

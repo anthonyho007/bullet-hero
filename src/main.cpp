@@ -1,14 +1,19 @@
 #include <iostream>
 #include <SDL.h>
+#include "game.h"
 
 /*
  * Lesson 0: Test to make sure SDL is setup properly
  */
 int main(int, char**){
-	if (SDL_Init(SDL_INIT_VIDEO) != 0){
-		std::cout << "SDL_Init Error: " << SDL_GetError() << std::endl;
-		return 1;
+	try {
+		auto game = make_unique<Game>();
+		game->Run();
+	} catch (SDL2pp::Exception &e) {
+		std::cerr << e.GetSDLFunction() << std::endl;
+		std::cerr << e.GetSDLError() << std::endl;
+	} catch (std::exception &e) {
+		std::cerr << e.what() << std::endl;
 	}
-	SDL_Quit();
 	return 0;
 }
