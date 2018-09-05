@@ -5,7 +5,7 @@ P2P shooting game in cpp
 
 download / clone with 
 
-    git clone --recursive <.git link>
+    git clone --recursive https://github.com/anthonyho007/bullet-hero.git
 
 to install dependencies on linux system
 
