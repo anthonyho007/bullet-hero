@@ -1,3 +1,6 @@
+#ifndef VECTOR2_H
+#define VECTOR2_H
+
 #include<math.h>
 class Vec2 {
     public:
@@ -9,4 +12,6 @@ class Vec2 {
         void SetPosY(double y);
         void SetPosX(double x);
         void Rotate(double angle); 
-}
+};
+
+#endif // VECTOR2_H

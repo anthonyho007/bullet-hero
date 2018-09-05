@@ -32,6 +32,7 @@ find_package(SDL2_Image REQUIRED)
 include_directories(${SDL2PP_INCLUDE_DIRS} ${SDL2_INCLUDE_DIR} ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR})
 
 include_directories("${PROJECT_SOURCE_DIR}/src")
+include_directories("./json/src")
 
 file (GLOB p2pshoot_SOURCES src/*.cpp)
 
