@@ -1,14 +1,6 @@
-#include "assets.h"
-#include "game_state.h"
-#include "game.h"
-#include "helper.h"
-#include "objbect.h"
-#include "screen.h"
-#include "vector2.h"
-
 #include "bullet.h"
-#include "config.h"
-#include "stage.h"
+#include "setting.h"
+//#include "stage.h"
 
 Bullet::Bullet(const std::shared_ptr<LevelStage>& stage,
                const std::shared_ptr<Actor>& parent,

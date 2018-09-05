@@ -1,11 +1,3 @@
-#include "assets.h"
-#include "game_state.h"
-#include "game.h"
-#include "helper.h"
-#include "objbect.h"
-#include "screen.h"
-#include "vector2.h"
-
 #ifndef SRC_BULLET_H_
 #define SRC_BULLET_H_
 
@@ -13,7 +5,7 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <memory>
 #include "actor.h"
-#include "resource.h"
+#include "assets.h"
 
 class LevelStage;
 
