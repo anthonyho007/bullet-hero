@@ -1,15 +1,7 @@
-#include "assets.h"
-#include "game_state.h"
-#include "game.h"
-#include "helper.h"
-#include "objbect.h"
-#include "screen.h"
-#include "vector2.h"
-
 #include "client.h"
+#include "setting.h"
+#include "assets.h"
 /*
-#include "config.h"
-#include "resource.h"
 #include "stage.h"
 #include "util.h"
 */

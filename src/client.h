@@ -1,11 +1,3 @@
-#include "assets.h"
-#include "game_state.h"
-#include "game.h"
-#include "helper.h"
-#include "objbect.h"
-#include "screen.h"
-#include "vector2.h"
-
 #ifndef SRC_ClIENT_H_
 #define SRC_ClIENT_H_
 
@@ -15,7 +7,7 @@
 #include "actor.h"
 #include "bullet.h"
 #include "input.h"
-#include "resource.h"
+#include "assets.h"
 
 class LevelStage;
 
