@@ -6,6 +6,8 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="src">
+    <File Name="src/bullet.cpp"/>
+    <File Name="src/bullet.h"/>
     <File Name="src/input.cpp"/>
     <File Name="src/input.h"/>
     <File Name="src/game_state.cpp"/>

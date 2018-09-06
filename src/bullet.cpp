@@ -1,41 +1,39 @@
 #include "bullet.h"
-#include "setting.h"
-//#include "stage.h"
 
-Bullet::Bullet(const std::shared_ptr<LevelStage>& stage,
-               const std::shared_ptr<Actor>& parent,
-               std::string texture_key,
-               SDL2pp::Point p,
-               SDL2pp::Point v)
-    : Actor(stage->renderer,
-            stage->resource_manager,
-            texture_key,
-            std::move(p),
-            std::move(v)),
-      stats(std::make_shared<BulletStats>()),
-      stage(stage) {
-  position = SDL2pp::Point{
-      parent->GetPosition().x + parent->GetSize().x,
-      (parent->GetPosition().y + (parent->GetSize().y / 2)) - GetSize().y};
-  scale = 3;
+Bullet::Bullet(
+    std::string textureId,
+    const std::shared_ptr<Object> & shooter,
+    const std::shared_ptr<GameState> & gameState,
+    int speedMul
+) : Object(
+    gameState->renderer,
+    gameState->assetsManager,
+    textureId,
+    SDL2pp::Point{0, 0},
+    SDL2pp::Point{5, 0},
+    2),
+    gameState(gameState),
+    speedMultiplier(speedMul)
+{
+    pos = SDL2pp::Point {shooter->pos.x, shooter->pos.y};
+    speed = SDL2pp::Point {shooter->speed.x, shooter->speed.y};
+}
+
+bool Bullet::IsCollided() {
+    return GAME_GRID.Contains(pos) ? false : true;
 }
 
 void Bullet::Update() {
-  position += velocity;
-
-  Uint32 now = SDL_GetTicks();
-  if (now - last_scale >= 50 && scale < 5) {
-    scale++;
-    last_scale = now;
-  }
-  tilt += 15;
-  if (InBounds()) {
-    stage->renderer->Copy(
-        *stage->resource_manager->GetTexture("bullet1"), SDL2pp::NullOpt,
-        SDL2pp::Rect(
-            position,
-            (stage->resource_manager->GetTexture("bullet1")->GetSize() *
-             scale)),
-        tilt);
-  }
+    if(!IsCollided()) {
+        renderer->Copy(
+            *assetsManager->GetTexture(textureId),
+            SDL2pp::NullOpt,
+            SDL2pp::Rect(
+                pos,
+                assetsManager->GetTexture(textureId)->GetSize() * ratio
+            ),
+            0
+        );
+        pos += speed * speedMultiplier;
+    }
 }

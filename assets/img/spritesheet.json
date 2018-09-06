@@ -2,5 +2,9 @@
   {
     "name": "spaceinvader",
     "location": "assets/img/spaceinvader.png"
+  },
+  {
+    "name": "bullets",
+    "location": "assets/img/bulletsheet.png"
   }
 ]

@@ -7,7 +7,6 @@
 #include <SDL2pp/SDL2pp.hh>
 #include <SDL2/SDL_image.h>
 
-#include "screen.h"
 #include "assets.h"
 #include "client.h"
 #include "helper.h"
@@ -15,6 +14,8 @@
 class GameState;
 class Client;
 class Input;
+class Object;
+class AssetsManager;
 
 class Game
 {

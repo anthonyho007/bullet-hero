@@ -65,12 +65,12 @@ Game::Game()
             Screen.h,
             SDL_WINDOW_RESIZABLE
         ),
-        assetsManager(make_unique<AssetsManager>()),
-        input(std::make_shared<Input>()),
         sdl_renderer(make_unique<SDL2pp::Renderer>(
           sdl_window,
           -1,
-          SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE))
+          SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE)),
+        assetsManager(make_unique<AssetsManager>()),
+        input(std::make_shared<Input>())
 {
     LoadAssets(sdl_renderer, assetsManager);
     gamestate = std::make_shared<GameState>(sdl_renderer, assetsManager);

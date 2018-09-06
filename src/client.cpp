@@ -6,15 +6,14 @@ Client::Client(
             const std::string textureId,
             SDL2pp::Point pos
 ) : Object(
-        id,
         gameState->renderer,
         gameState->assetsManager,
         textureId,
         pos,
-        SDL2pp::Point{0, 0},
-        0.0,
-        1
-    ),
+        SDL2pp::Point{5, 0},
+        1),
+    gameState(gameState),
+    id(id),
     heath(5)
 {}
 void Client::Update() {
@@ -34,6 +33,13 @@ void Client::HandleInput(const std::shared_ptr<Input> & input) {
 }
 
 void Client::Fire() {
-    return;
+    Uint32 curr = SDL_GetTicks();
+    if ((curr - lastFireTime) > fireDelay) {
+        CreateBullet();
+        lastFireTime = curr;
+    }
 }
 
+void Client::CreateBullet() {
+    gameState->CreateBullet(shared_from_this());
+}

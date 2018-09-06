@@ -3,10 +3,14 @@
 
 #include <SDL2pp/SDL2pp.hh>
 #include "assets.h"
+#include "object.h"
 #include "client.h"
-class Client;
+#include "bullet.h"
+#include "string.h"
 class Input;
-class GameState {
+class Bullet;
+class Client;
+class GameState : public std::enable_shared_from_this<GameState>{
 public:
         GameState(
             const std::unique_ptr<SDL2pp::Renderer> & renderer,
@@ -20,9 +24,15 @@ public:
         void HandleInput(const std::shared_ptr<Input> & input);
         void Update();
         void Shoot();
+        std::string GenNextBulletId();
+        void CreateBullet(const std::shared_ptr<Client> & client);
+        void RemoveInvalidBullet();
         
-    private:
-        std::map<std::string, std::shared_ptr<Client>> clients;
+        
+private:
+    int nextBulletId = 0;
+    std::map<std::string, std::shared_ptr<Client>> clients;
+    std::vector<std::shared_ptr<Bullet>> bullets;
 };
 
 #endif // GAMESTATE_H
