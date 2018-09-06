@@ -1,3 +1,4 @@
+
 #include "input.h"
 
 Input::Input()
@@ -9,3 +10,4 @@ bool Input::IsPressed(int key)
 {
     return keystate[key];
 }
+
