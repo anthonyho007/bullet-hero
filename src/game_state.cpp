@@ -12,3 +12,8 @@ GameState::GameState(
 void GameState::Update() {
     mClient->Update();
 }
+
+
+void GameState::HandleInput(const std::shared_ptr<Input> & input) {
+    mClient->HandleInput(input);
+}

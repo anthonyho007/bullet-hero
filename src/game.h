@@ -14,6 +14,7 @@
 
 class GameState;
 class Client;
+class Input;
 
 class Game
 {
@@ -28,6 +29,7 @@ private:
     std::shared_ptr<GameState> gamestate;
     std::unique_ptr<SDL2pp::Renderer> sdl_renderer;
     std::unique_ptr<AssetsManager> assetsManager;
+    std::shared_ptr<Input> input;
 
     bool quit = false;
 };

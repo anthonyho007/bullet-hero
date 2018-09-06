@@ -66,6 +66,7 @@ Game::Game()
             SDL_WINDOW_RESIZABLE
         ),
         assetsManager(make_unique<AssetsManager>()),
+        input(std::make_shared<Input>()),
         sdl_renderer(make_unique<SDL2pp::Renderer>(
           sdl_window,
           -1,
@@ -86,7 +87,7 @@ void Game::Run() {
         sdl_renderer->SetDrawColor(255, 255, 255, 255);
         sdl_renderer->Clear();
         sdl_renderer->SetViewport(Screen);
-        
+        gamestate->HandleInput(input);
         gamestate->Update();
         
         sdl_renderer->Present();

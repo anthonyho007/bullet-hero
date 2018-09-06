@@ -4,6 +4,7 @@
 #include "object.h"
 #include "constant.h"
 #include "game_state.h"
+#include "input.h"
 
 class GameState;
 class Client : public Object, public std::enable_shared_from_this<Client> {
@@ -14,7 +15,10 @@ class Client : public Object, public std::enable_shared_from_this<Client> {
             const std::string textureId,
             SDL2pp::Point pos
         );
-        void Update() final;
+        void Update();
+        void HandleInput(const std::shared_ptr<Input> & input);
+
+        void Fire();
         
 
     private:

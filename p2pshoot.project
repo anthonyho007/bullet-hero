@@ -6,6 +6,8 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="src">
+    <File Name="src/input.cpp"/>
+    <File Name="src/input.h"/>
     <File Name="src/game_state.cpp"/>
     <File Name="src/game_state.h"/>
     <File Name="src/constant.h"/>

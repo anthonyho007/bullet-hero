@@ -26,4 +26,13 @@ void Client::Update() {
     );
 }
 
+void Client::HandleInput(const std::shared_ptr<Input> & input) {
+    if (input->IsPressed(SDL_SCANCODE_SPACE)) {
+        Fire();
+    }
+}
+
+void Client::Fire() {
+    return;
+}
 
