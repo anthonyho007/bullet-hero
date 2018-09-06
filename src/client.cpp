@@ -1,11 +1,15 @@
+/*
 #include "client.h"
 #include "setting.h"
 #include "assets.h"
-/*
+*/
+
+/* to be implemented
 #include "stage.h"
 #include "util.h"
 */
 
+/*
 PlayerClient::PlayerClient(const std::shared_ptr<LevelStage>& stage,
                        const std::string& texture_key,
                        SDL2pp::Point position,
@@ -119,4 +123,42 @@ void Client::OnHitByBullet(std::shared_ptr<Bullet> bullet) {
   stats->health -= bullet->stats->damage;
   console->info("hit for {}, {}/{}", bullet->stats->damage, stats->health,
                 stats->health_max);
+}
+*/
+#include "client.h"
+Client::Client(
+            const std::shared_ptr<GameState> & gameState,
+            const std::string id,
+            const std::string textureId,
+            SDL2pp::Point pos
+) : Object(
+        id,
+        gameState->renderer,
+        gameState->assetsManager,
+        textureId,
+        pos,
+        SDL2pp::Point{0, 0},
+        0.0,
+        1
+    ),
+    heath(5)
+{}
+void Client::Update() {
+    renderer->Copy(
+        *assetsManager->GetTexture(textureId),
+        SDL2pp::Rect{0,0, GetRect().w, GetRect().h},
+        pos,
+        0,
+        SDL2pp::NullOpt, 0
+    );
+}
+
+void Client::HandleInput(const std::shared_ptr<Input> & input) {
+    if (input->IsPressed(SDL_SCANCODE_SPACE)) {
+        Fire();
+    }
+}
+
+void Client::Fire() {
+    return;
 }
