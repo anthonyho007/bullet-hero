@@ -1,11 +1,4 @@
-/*
-#include "input.h"
-#include "SDL2/SDL.h"
 
-InputManager::InputManager() {
-  keys = SDL_GetKeyboardState(nullptr);
-}
-*/
 #include "input.h"
 
 Input::Input()
@@ -17,3 +10,4 @@ bool Input::IsPressed(int key)
 {
     return keystate[key];
 }
+
