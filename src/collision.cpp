@@ -25,9 +25,15 @@ bool Collision::CheckBulletTileCollision(const std::shared_ptr<Bullet> &bullet) 
 
 bool Collision::UpdatePlayerBulletCollision(std::string id) {
     auto client = gameState->clients[id];
-    for(auto& bullet : gameState->bullets) {
+    
+    auto iter = std::begin(gameState->bullets);
+    while (iter != std::end(gameState->bullets)) {
+        auto bullet = *iter;
         if (IsRectIntersect(client->GetRect(), bullet->GetRect())) {
+            iter = gameState->bullets.erase(iter);
             client->health--;
+        }else {
+            ++iter;
         }
     }
 }

@@ -11,6 +11,14 @@ GameState::GameState(
 
 
 void GameState::Update() {
+    // check if clients get hit by bullets
+    for(auto& client : clients) {
+        collisionManager->UpdatePlayerBulletCollision(client.first);
+        if (client.second->health <= 0) {
+            std::cout << "Player " + client.first + " is dead" << std::endl;
+            clients.erase(client.first);
+        }
+    }
     topologyManger->Update();
     // draw client
     for (auto& client : clients) {

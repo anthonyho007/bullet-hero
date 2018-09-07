@@ -13,7 +13,7 @@ Client::Client(
         SDL2pp::Point{5, 0},
         1),
     gameState(gameState),
-    health(5),
+    health(10),
     id(id),
     previousPos(pos)
 {}
@@ -22,11 +22,6 @@ void Client::Update() {
     bool isCollidedWithTile = gameState->collisionManager->CheckPlayerTileCollision();
     if (isCollidedWithTile) {
         pos = previousPos;
-    }
-    gameState->collisionManager->UpdatePlayerBulletCollision(id);
-    if (health <= 0) {
-        std::cout << "The " + id +"is dead" << std::endl;
-        // to be implement dead logics
     }
     renderer->Copy(
         *assetsManager->GetTexture(textureId),
