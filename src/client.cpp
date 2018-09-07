@@ -14,10 +14,15 @@ Client::Client(
         1),
     gameState(gameState),
     id(id),
-    heath(5)
+    heath(5),
+    previousPos(pos)
 {}
 
 void Client::Update() {
+    bool isCollidedWithTile = gameState->collisionManager->CheckPlayerTileCollision();
+    if (isCollidedWithTile) {
+        pos = previousPos;
+    }
     renderer->Copy(
         *assetsManager->GetTexture(textureId),
         SDL2pp::Rect{0,0, GetRect().w, GetRect().h},
@@ -31,6 +36,7 @@ void Client::HandleInput(const std::shared_ptr<Input> & input) {
     if (input->IsPressed(SDL_SCANCODE_SPACE)) {
         Fire();
     }
+    previousPos = pos;
     if (input->IsPressed(SDL_SCANCODE_UP) || input->IsPressed(SDL_SCANCODE_W) || input->IsPressed(SDL_SCANCODE_K)) {
       pos.y--;
     }

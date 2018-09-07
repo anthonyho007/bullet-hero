@@ -12,6 +12,7 @@ class Input;
 class Bullet;
 class Client;
 class Topology;
+class Collision;
 class GameState : public std::enable_shared_from_this<GameState>{
 public:
         GameState(
@@ -23,6 +24,7 @@ public:
         const std::unique_ptr<SDL2pp::Renderer> & renderer;
         const std::unique_ptr<AssetsManager> & assetsManager;
         std::shared_ptr<Topology> topologyManger;
+        std::shared_ptr<Collision> collisionManager;
         
         void HandleInput(const std::shared_ptr<Input> & input);
         void Update();

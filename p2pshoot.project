@@ -6,6 +6,8 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="src">
+    <File Name="src/collision.cpp"/>
+    <File Name="src/collision.h"/>
     <File Name="src/helper.cpp"/>
     <File Name="src/topology.cpp"/>
     <File Name="src/topology.h"/>

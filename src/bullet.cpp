@@ -4,6 +4,7 @@ Bullet::Bullet(
     std::string textureId,
     const std::shared_ptr<Object> & shooter,
     const std::shared_ptr<GameState> & gameState,
+    const std::shared_ptr<Collision> & collisionManager,
     int speedMul
 ) : Object(
     gameState->renderer,
@@ -12,7 +13,7 @@ Bullet::Bullet(
     SDL2pp::Point{0, 0},
     SDL2pp::Point{5, 0},
     2),
-    gameState(gameState),
+    collisionManager(collisionManager),
     speedMultiplier(speedMul)
 {
     pos = SDL2pp::Point {shooter->pos.x, shooter->pos.y};
@@ -20,7 +21,8 @@ Bullet::Bullet(
 }
 
 bool Bullet::IsCollided() {
-    return GAME_GRID.Contains(pos) ? false : true;
+    bool isCollided = collisionManager->CheckBulletTileCollision(shared_from_this());
+    return isCollided;
 }
 
 void Bullet::Update() {

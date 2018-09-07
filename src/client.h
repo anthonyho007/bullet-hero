@@ -5,6 +5,7 @@
 #include "game_state.h"
 #include "input.h"
 #include "object.h"
+#include "collision.h"
 
 class GameState;
 class Object;
@@ -31,5 +32,6 @@ private:
     int heath;
     Uint32 lastFireTime = 0;
     Uint32 fireDelay = 100;
+    SDL2pp::Point previousPos;
 };
 #endif // CLIENT_H

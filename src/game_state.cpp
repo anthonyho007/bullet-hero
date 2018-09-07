@@ -31,6 +31,7 @@ void GameState::CreateBullet(const std::shared_ptr<Client> & client) {
         "bullet1",
         client,
         shared_from_this(),
+        collisionManager,
         1);
     bullets.push_back(bullet);
 }
