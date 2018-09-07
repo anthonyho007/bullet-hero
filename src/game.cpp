@@ -21,8 +21,12 @@ Game::Game()
     LoadAssets(sdl_renderer, assetsManager);
     gamestate = std::make_shared<GameState>(sdl_renderer, assetsManager);
     gamestate->mClient = std::make_shared<Client>(gamestate, "player1", "player1",SDL2pp::Point{30, 30});
+    gamestate->createUser(gamestate, "player1", "player1", SDL2pp::Point{30,30}, true);
+    gamestate->createUser(gamestate, "player2", "player1", SDL2pp::Point{500,200}, false);
     gamestate->topologyManger = std::make_shared<Topology>(gamestate);
     gamestate->collisionManager = std::make_shared<Collision>(gamestate);
+    
+    // AI user
 }
 
 void Game::Run() {

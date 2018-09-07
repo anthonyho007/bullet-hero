@@ -20,16 +20,16 @@ class Client : public std::enable_shared_from_this<Client>, public Object
         );
         
         const std::shared_ptr<GameState> & gameState;
+        int health;
+        bool dead = false;
         void Update();
         void HandleInput(const std::shared_ptr<Input> & input);
-
+        bool IsDead();
         void Fire();
-        
         void CreateBullet();
 
 private:
     std::string id;
-    int heath;
     Uint32 lastFireTime = 0;
     Uint32 fireDelay = 100;
     SDL2pp::Point previousPos;

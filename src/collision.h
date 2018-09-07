@@ -12,7 +12,7 @@ public:
     ~Collision();
 
     bool CheckPlayerTileCollision();
-    bool CheckPlayerBulletCollision();
+    bool UpdatePlayerBulletCollision(std::string id);
     bool CheckBulletTileCollision(const std::shared_ptr<Bullet> & bullet);
     bool IsRectIntersect(SDL2pp::Rect rect1, SDL2pp::Rect rect2);
 

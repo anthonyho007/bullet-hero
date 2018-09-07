@@ -23,6 +23,15 @@ bool Collision::CheckBulletTileCollision(const std::shared_ptr<Bullet> &bullet) 
     return false;
 }
 
+bool Collision::UpdatePlayerBulletCollision(std::string id) {
+    auto client = gameState->clients[id];
+    for(auto& bullet : gameState->bullets) {
+        if (IsRectIntersect(client->GetRect(), bullet->GetRect())) {
+            client->health--;
+        }
+    }
+}
+
 bool Collision::IsRectIntersect(SDL2pp::Rect rect1, SDL2pp::Rect rect2)
 {
     return rect1.Intersects(rect2);

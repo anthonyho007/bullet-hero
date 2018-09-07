@@ -32,12 +32,13 @@ public:
         std::string GenNextBulletId();
         void CreateBullet(const std::shared_ptr<Client> & client);
         void RemoveInvalidBullet();
-        
+        void createUser(const std::shared_ptr<GameState> & gamestate, std::string id, std::string textureId, SDL2pp::Point pos, bool isLocalPlayer);
+
+        std::vector<std::shared_ptr<Bullet>> bullets;
+        std::map<std::string, std::shared_ptr<Client>> clients;
         
 private:
     int nextBulletId = 0;
-    std::map<std::string, std::shared_ptr<Client>> clients;
-    std::vector<std::shared_ptr<Bullet>> bullets;
 };
 
 #endif // GAMESTATE_H

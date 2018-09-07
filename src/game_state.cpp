@@ -13,7 +13,10 @@ GameState::GameState(
 void GameState::Update() {
     topologyManger->Update();
     // draw client
-    mClient->Update();
+    for (auto& client : clients) {
+        client.second->Update();
+    }
+//    mClient->Update();
     // update and draw bullet
     RemoveInvalidBullet();
     for (auto& bullet : bullets) {
@@ -45,5 +48,13 @@ void GameState::RemoveInvalidBullet() {
         }else {
             ++iter;
         }
+    }
+}
+
+void GameState::createUser(const std::shared_ptr<GameState> & gamestate, std::string id, std::string textureId, SDL2pp::Point pos, bool isLocalPlayer) {
+    auto client = std::make_shared<Client>(gamestate, id, textureId, pos);
+    clients[id] = client;
+    if (isLocalPlayer) {
+        mClient = client;
     }
 }
