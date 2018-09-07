@@ -11,6 +11,7 @@ GameState::GameState(
 
 
 void GameState::Update() {
+    topologyManger->Update();
     // draw client
     mClient->Update();
     // update and draw bullet

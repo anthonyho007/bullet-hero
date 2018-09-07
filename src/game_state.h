@@ -7,9 +7,11 @@
 #include "client.h"
 #include "bullet.h"
 #include "string.h"
+#include "topology.h"
 class Input;
 class Bullet;
 class Client;
+class Topology;
 class GameState : public std::enable_shared_from_this<GameState>{
 public:
         GameState(
@@ -20,6 +22,7 @@ public:
         std::shared_ptr<Client> mClient;
         const std::unique_ptr<SDL2pp::Renderer> & renderer;
         const std::unique_ptr<AssetsManager> & assetsManager;
+        std::shared_ptr<Topology> topologyManger;
         
         void HandleInput(const std::shared_ptr<Input> & input);
         void Update();

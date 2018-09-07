@@ -10,12 +10,14 @@
 #include "assets.h"
 #include "client.h"
 #include "helper.h"
+#include "topology.h"
 
 class GameState;
 class Client;
 class Input;
 class Object;
 class AssetsManager;
+class Topology;
 
 class Game
 {

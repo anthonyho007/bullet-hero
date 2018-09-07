@@ -6,5 +6,9 @@
   {
     "name": "bullets",
     "location": "assets/img/bulletsheet.png"
+  },
+  {
+    "name": "blackbg",
+    "location": "assets/img/v_dark.bmp"
   }
 ]

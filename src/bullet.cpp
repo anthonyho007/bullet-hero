@@ -32,7 +32,7 @@ void Bullet::Update() {
                 pos,
                 assetsManager->GetTexture(textureId)->GetSize() * ratio
             ),
-            0
+            15
         );
         pos += speed * speedMultiplier;
     }

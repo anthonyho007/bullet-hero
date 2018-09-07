@@ -22,7 +22,7 @@ const std::shared_ptr<SDL2pp::Texture> & Object::GetTexture() const
 
 SDL2pp::Point Object::GetSize() const 
 {
-    return GetTexture()->GetSize() / ratio;
+    return GetTexture()->GetSize() * ratio;
 }
 
 SDL2pp::Rect Object::GetRect() const

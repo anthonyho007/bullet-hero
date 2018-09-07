@@ -6,6 +6,11 @@
     </Plugin>
   </Plugins>
   <VirtualDirectory Name="src">
+    <File Name="src/helper.cpp"/>
+    <File Name="src/topology.cpp"/>
+    <File Name="src/topology.h"/>
+    <File Name="src/tile.cpp"/>
+    <File Name="src/tile.h"/>
     <File Name="src/bullet.cpp"/>
     <File Name="src/bullet.h"/>
     <File Name="src/input.cpp"/>

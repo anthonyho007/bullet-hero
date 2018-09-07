@@ -8,5 +8,10 @@
         "name": "bullet1",
         "sheet": "bullets",
         "coord": [55, 140, 4, 4]
+    },
+    {
+        "name": "blackTile",
+        "sheet": "blackbg",
+        "coord": [0,0, 100,100]
     }
 ]
