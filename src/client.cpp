@@ -37,6 +37,28 @@ void Client::HandleInput(const std::shared_ptr<Input> & input) {
         Fire();
     }
     previousPos = pos;
+
+
+    if ( (input->IsPressed(SDL_SCANCODE_UP)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_W)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_K)&&input->IsPressed(SDL_SCANCODE_SPACE))) {
+      pos.y--;
+      speed = SDL2pp::Point{0,-5};
+    }
+
+    if ((input->IsPressed(SDL_SCANCODE_DOWN)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_S)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_J)&&input->IsPressed(SDL_SCANCODE_SPACE))) {
+      pos.y++;
+      speed = SDL2pp::Point{0,5};
+    }
+
+    if ((input->IsPressed(SDL_SCANCODE_LEFT)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_A)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_H)&&input->IsPressed(SDL_SCANCODE_SPACE))) {
+      pos.x--;
+      speed = SDL2pp::Point{-5,0};
+    }
+
+    if ((input->IsPressed(SDL_SCANCODE_RIGHT)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_D)&&input->IsPressed(SDL_SCANCODE_SPACE)) || (input->IsPressed(SDL_SCANCODE_L)&&input->IsPressed(SDL_SCANCODE_SPACE))) {
+      pos.x++;
+      speed = SDL2pp::Point{5,0};
+    }
+
     if (input->IsPressed(SDL_SCANCODE_UP) || input->IsPressed(SDL_SCANCODE_W) || input->IsPressed(SDL_SCANCODE_K)) {
       pos.y--;
     }
