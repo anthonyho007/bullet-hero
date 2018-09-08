@@ -1,4 +1,4 @@
-# p2pshoot
+# Bullet Hero
 A P2P shooting mini-game written in c++ using SDL2pp library.
 
 ![bullet hero](assets/bullet-hero.png)
