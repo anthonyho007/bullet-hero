@@ -35,10 +35,11 @@ void Game::Run() {
         if (SDL_PollEvent(&evt)) {
             PollEvent(&evt);
         }
+        gamestate->HandleInput(input);
+
         sdl_renderer->SetDrawColor(255, 255, 255, 255);
         sdl_renderer->Clear();
         sdl_renderer->SetViewport(Screen);
-        gamestate->HandleInput(input);
         gamestate->Update();
         
         sdl_renderer->Present();

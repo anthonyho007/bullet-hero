@@ -16,7 +16,7 @@ Bullet::Bullet(
     collisionManager(collisionManager),
     speedMultiplier(speedMul)
 {
-    pos = SDL2pp::Point {shooter->pos.x + shooter->GetSize().x, shooter->pos.y + shooter->GetSize().y};
+    pos = SDL2pp::Point {shooter->pos.x + shooter->GetSize().x + GetSize().x, shooter->pos.y + shooter->GetSize().y + GetSize().y};
     speed = SDL2pp::Point {shooter->speed.x, shooter->speed.y};
 }
 
