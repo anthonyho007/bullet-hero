@@ -6,17 +6,27 @@ GameState::GameState(
     const std::unique_ptr<AssetsManager> & assetsManager)
     :   renderer(renderer),
         assetsManager(assetsManager)
-{    
+{
 }
-
 
 void GameState::Update() {
     // check if clients get hit by bullets
     for(auto& client : clients) {
         collisionManager->UpdatePlayerBulletCollision(client.first);
+
         if (client.second->health <= 0) {
             std::cout << "Player " + client.first + " is dead" << std::endl;
-            clients.erase(client.first);
+            // clients.erase(client.first);
+            auto enemy = client.second;
+            enemy->health = 10;
+            enemy->pos = SDL2pp::Point{rand()%600,rand()%400};
+
+            bool isCollidedWithTile = enemy->gameState->collisionManager->CheckPlayerTileCollision();
+
+            while (isCollidedWithTile) {
+                enemy->pos = SDL2pp::Point{rand()%600,rand()%400};
+                isCollidedWithTile = enemy->gameState->collisionManager->CheckPlayerTileCollision();
+            }
         }
     }
     topologyManger->Update();
